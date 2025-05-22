@@ -11,6 +11,8 @@
   gap: 1px;
 }
 .header-cell {
+  display: flex;
+  align-items: center;
   padding: 10px;
   color: var(--table-header-color);
   background-color: var(--table-header-background-color);

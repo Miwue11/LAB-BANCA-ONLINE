@@ -27,13 +27,6 @@
   justify-content: center;
 }
 
-.select {
-  width: 90%;
-  font-size: 13px;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 8px 10px;
-}
 .red {
   color: red;
 }

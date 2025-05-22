@@ -12,7 +12,9 @@ export const MovementListItemComponent: React.FC<Props> = ({
 
   return (
     <div className={classes.row}>
-      <span>{movementItem.transaction.toLocaleDateString()}</span>
+      <span className={classes.dataCell}>
+        {movementItem.transaction.toLocaleDateString()}
+      </span>
       <span>{movementItem.realTransaction.toLocaleDateString()}</span>
       <span>{movementItem.description}</span>
       <span className={isNegative ? classes.red : undefined}>
