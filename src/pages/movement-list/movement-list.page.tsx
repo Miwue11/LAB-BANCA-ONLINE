@@ -5,8 +5,8 @@ import {
   getAccountById,
   getAliasAndIBAN,
   getMovements,
-} from "../movement-components/api";
-import { MovementListTableComponent } from "../movement-components/components";
+} from "../movements/api";
+import { MovementListTableComponent } from "../movements/components";
 import { useParams } from "react-router-dom";
 import { mapMovementsFromApiToVm } from "./movement-list.mapper";
 import classes from "./movement-list.module.css";
