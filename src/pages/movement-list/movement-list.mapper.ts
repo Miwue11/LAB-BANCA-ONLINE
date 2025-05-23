@@ -1,4 +1,4 @@
-import { Movement } from "./api/movement.api-model";
+import { Movement } from "../movement-components/api/movement.api-model";
 import { MovementVm } from "./movement-list.vm";
 
 export const mapMovementsFromApiToVm = (apiList: Movement[]): MovementVm[] =>
