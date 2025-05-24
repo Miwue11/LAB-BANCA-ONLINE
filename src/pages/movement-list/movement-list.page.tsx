@@ -1,12 +1,8 @@
 import { AppLayout } from "@/layouts";
 import React from "react";
 import { MovementVm } from "./movement-list.vm";
-import {
-  getAccountById,
-  getAliasAndIBAN,
-  getMovements,
-} from "../movements/api";
-import { MovementListTableComponent } from "../movements/components";
+import { getAccountById, getAliasAndIBAN, getMovements } from "../movement/api";
+import { MovementListTableComponent } from "../movement/components";
 import { useParams } from "react-router-dom";
 import { mapMovementsFromApiToVm } from "./movement-list.mapper";
 import classes from "./movement-list.module.css";
