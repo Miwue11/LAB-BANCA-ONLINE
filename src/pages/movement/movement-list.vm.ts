@@ -7,3 +7,8 @@ export interface MovementVm {
   realTransaction: Date;
   accountId: string;
 }
+export interface AccountVm {
+  iban: string;
+  name: string;
+  balance: string;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { MovementVm } from "../../movement-list/movement-list.vm";
+import { MovementVm } from "../movement-list.vm";
 import { MovementListItemComponent } from "./movement-list.item.component";
 import classes from "./movement-table.component.module.css";
 interface Props {
