@@ -8,12 +8,22 @@ interface Props {
 
 export const TransferFormComponent: React.FC<Props> = (props) => {
   const { accountList, onTransfer } = props;
-  const [transfer /*setTransfer*/] = React.useState<TransferVm>(
+  const [transfer, setTransfer] = React.useState<TransferVm>(
     createTransferVm()
   );
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onTransfer(transfer);
+  };
+  const handleFieldChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setTransfer({
+      ...transfer,
+      [e.target.name]: e.target.value,
+    });
   };
   return (
     <div>
@@ -22,45 +32,54 @@ export const TransferFormComponent: React.FC<Props> = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Seleccione cuenta origen.</label>
-          <select>
+          <select
+            name="accountId"
+            onChange={handleFieldChange}
+            value={transfer.accountId}
+          >
             {accountList.map((account) => (
               <option key={account.id} value={account.id}>
                 {account.alias}
               </option>
             ))}
+            <option>Seleccione una cuenta</option>
           </select>
         </div>
         <div>
           <label>Ingrese el IBAN de la cuenta destino:</label>
-          <input />
+          <input name="iban" onChange={handleFieldChange} />
         </div>
         <div>
           <label>Beneficiario:</label>
-          <input />
+          <input name="name" onChange={handleFieldChange} />
         </div>
         <div>
           <label>Importe</label>
-          <input type="number" />
+          <input type="number" name="amount" onChange={handleFieldChange} />
         </div>
         <div>
           <label>Concepto:</label>
-          <input type="concept" />
+          <input type="concept" name="concept" onChange={handleFieldChange} />
         </div>
         <div>
           <label>Observaciones:</label>
-          <input type="notes" />
+          <input type="notes" name="notes" onChange={handleFieldChange} />
         </div>
         <div>
           <p>
             Para que la transferencia se realice en otra fecha diferente a la de
             hoy, por favor, indiquenos la fecha de ejecución:
-            <label>Fecha de ejecución</label>
-            <input name="realDaleTransfer" type="date" />
           </p>
+          <label>Fecha de ejecución:</label>
+          <input
+            name="realDaleTransfer"
+            type="date"
+            onChange={handleFieldChange}
+          />
         </div>
         <div>
           <p>Escriba una direccion email para dar aviso al beenficiario:</p>
-          <input type="email" />
+          <input type="email" name="email" onChange={handleFieldChange} />
         </div>
         <button type="submit">REALIZAR LA TRANSFERENCIA</button>
       </form>

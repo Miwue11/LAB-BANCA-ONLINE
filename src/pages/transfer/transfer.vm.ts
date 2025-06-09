@@ -27,3 +27,37 @@ export const createTransferVm = (): TransferVm => {
         email: ""
     };
 }
+
+export interface TransferError {
+    accountId: string;
+    amount: string;
+    name: string;
+    iban: string;
+    concept: string;
+    notes: string;
+    dateTransfer: string;
+    realDateTransfer: string;
+    email: string;
+}
+
+export const createEmptyTransferVmError = (): TransferError => ({
+    accountId: "",
+    amount: "",
+    name: "",
+    iban: "",
+    concept: "",
+    notes: "",
+    dateTransfer: "",
+    realDateTransfer: "",
+    email: ""
+})
+
+export interface FieldValidationResult {
+    succeeded: boolean;
+    errorMessage?: string;
+}
+
+export interface FormValidationResult {
+    succeeded: boolean;
+    errors: TransferError;
+}
