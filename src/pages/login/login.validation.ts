@@ -7,24 +7,22 @@ interface ValidationResult {
   succeeded: boolean;
   errors: CredentialsFormErrors;
 }
-export const validateForm = (
-  credentials: CredentialsFormErrors
-): ValidationResult => {
-  let validationResult: ValidationResult = {
+export const validateForm = (credentials: CredentialsFormErrors): ValidationResult => {
+  let validationResult = {
     succeeded: true,
     errors: createEmptyCredentialsFormErrors(),
   };
   if (!credentials.user.trim()) {
     validationResult.errors = {
       ...validationResult.errors,
-      user: "User is required",
+      user: "Debe informar el campo usuario",
     };
     validationResult.succeeded = false;
   }
   if (!credentials.password.trim()) {
     validationResult.errors = {
       ...validationResult.errors,
-      password: "Password is required",
+      password: "Debe informar el campo contraseña",
     };
     validationResult.succeeded = false;
   }

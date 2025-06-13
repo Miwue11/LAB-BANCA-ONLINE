@@ -1,5 +1,11 @@
 import React from "react";
-import { AccountVm, createTransferVm, TransferVm } from "../transfer.vm";
+import {
+  AccountVm,
+  createEmptyTransferError,
+  createTransferVm,
+  TransferError,
+  TransferVm,
+} from "../transfer.vm";
 
 interface Props {
   accountList: AccountVm[];
@@ -11,9 +17,15 @@ export const TransferFormComponent: React.FC<Props> = (props) => {
   const [transfer, setTransfer] = React.useState<TransferVm>(
     createTransferVm()
   );
+  const [error, setErrors] = React.useState<TransferError>(
+    createEmptyTransferError()
+  );
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onTransfer(transfer);
+    const formValidationResult =
+      /*todo*/
+
+      onTransfer(transfer);
   };
   const handleFieldChange = (
     e:

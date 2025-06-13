@@ -40,7 +40,7 @@ export interface TransferError {
     email: string;
 }
 
-export const createEmptyTransferVmError = (): TransferError => ({
+export const createEmptyTransferError = (): TransferError => ({
     accountId: "",
     amount: "",
     name: "",

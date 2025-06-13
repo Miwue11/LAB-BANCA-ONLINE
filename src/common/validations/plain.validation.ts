@@ -24,3 +24,7 @@ export const isDateAfterToday = (date: Date): boolean => {
 export const isStringValueInFormed = (value: string): boolean => {
     return value !== null && value !== undefined && value.trim() !== "";
 }
+
+export const isValueNotNullOrUndifined = <T>(value: T): boolean => {
+    return value !== null && value !== undefined;
+}
