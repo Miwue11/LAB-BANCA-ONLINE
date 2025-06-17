@@ -17,7 +17,6 @@ const buildValidationFailedResult = (errorMessage: string): FieldValidationResul
 const buildValidationSucceededResult = (): FieldValidationResult => {
     return {
         succeeded: true,
-
     }
 }
 
@@ -84,3 +83,4 @@ export const validateEmailField = (value: string): FieldValidationResult => {
     }
     return buildValidationSucceededResult();
 }
+
