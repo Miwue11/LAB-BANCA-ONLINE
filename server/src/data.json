@@ -108,5 +108,105 @@
       "accountId": "3"
     }
   ],
-  "transfer": []
+  "transfer": [
+    {
+      "accountId": "2",
+      "iban": "ES7921000813610123456789",
+      "name": "Miwue",
+      "amount": "200",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 1
+    },
+    {
+      "accountId": "1",
+      "iban": "ES7921000813610123456789",
+      "name": "Miwue",
+      "amount": "200",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 2
+    },
+    {
+      "accountId": "1",
+      "iban": "ES7921000813610123456789",
+      "name": "Miwue",
+      "amount": "200",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 3
+    },
+    {
+      "accountId": "1",
+      "iban": "ES7921000813610123456789",
+      "name": "Miwue",
+      "amount": "500",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 4
+    },
+    {
+      "accountId": "1",
+      "iban": "ES7921000813610123456789",
+      "name": "Miwue",
+      "amount": "500",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 5
+    },
+    {
+      "accountId": "1",
+      "iban": "ES7921000813610123456789",
+      "name": "MIWUE",
+      "amount": "5000",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 6
+    },
+    {
+      "accountId": "3",
+      "iban": "ES7921000813610123456789",
+      "name": "MIWUE",
+      "amount": "5000",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 7
+    },
+    {
+      "accountId": "2",
+      "iban": "ES7921000813610123456789",
+      "name": "dialga",
+      "amount": "500",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 8
+    },
+    {
+      "accountId": "2",
+      "iban": "ES7921000813610123456789",
+      "name": "dialga",
+      "amount": "500",
+      "concept": "Carta Pokemon",
+      "notes": "mewtwo ex 151 promo",
+      "transferDate": "Thu Jun 26 2025",
+      "realTransferDate": "",
+      "id": 9
+    }
+  ]
 }
