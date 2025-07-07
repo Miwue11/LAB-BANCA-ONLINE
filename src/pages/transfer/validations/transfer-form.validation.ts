@@ -1,7 +1,8 @@
-import { FormValidationResult, TransferVm } from "../transfer.vm";
+import { TransferError, TransferVm } from "../transfer.vm";
 import { validasteNameField, validateAccountIdField, validateAmountField, validateConceptField, validateEmailField, validateIBANfield, validateNotesField, validateRealDateTransferField } from "./transfer-field.validation";
+import { FormValidationResult } from "./validations.model";
 
-export const validateForm = (transfer: TransferVm): FormValidationResult => {
+export const validateForm = (transfer: TransferVm): FormValidationResult<TransferError> => {
     const fieldValidationResult = [
         validateAccountIdField(transfer.accountId),
         validateIBANfield(transfer.iban),

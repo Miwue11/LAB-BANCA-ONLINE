@@ -1,18 +1,7 @@
-import {
-    validateIBANfield,
-    REQUIRED_FIELD_MESSAGE,
-    INVALID_IBAN_MESSAGE,
-    validateAccountIdField,
-    validasteNameField,
-    validateAmountField,
-    INVALID_AMOUNT_MESSAGE,
-    validateConceptField,
-    validateNotesField,
-    validateEmailField,
-    INVALID_EMAIL_MESSAGE,
-} from "./transfer-field.validation";
 
 
+import { validasteNameField, validateAccountIdField, validateAmountField, validateConceptField, validateEmailField, validateIBANfield, validateNotesField } from "./transfer-field.validation";
+import { INVALID_AMOUNT_MESSAGE, INVALID_EMAIL_MESSAGE, INVALID_IBAN_MESSAGE, REQUIRED_FIELD_MESSAGE } from "./validations.const"
 describe("transfer-field.validation specs", () => {
     describe("validateEmailField", () => {
         it("should return false when email is empty", () => {

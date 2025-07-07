@@ -1,12 +1,7 @@
 import { isDateAfterToday, isEmailWellFormed, isPositiveNumber, isStringValueInFormed, isValidIban, isValueNotNullOrUndifined } from "@/common/validations"
-import { FieldValidationResult } from "../transfer.vm"
+import { INVALID_AMOUNT_MESSAGE, INVALID_DATE_MESSAGE, INVALID_EMAIL_MESSAGE, INVALID_IBAN_MESSAGE, REQUIRED_FIELD_MESSAGE } from "./validations.const"
+import { FieldValidationResult } from "./validations.model"
 
-
-export const REQUIRED_FIELD_MESSAGE = "Debe informar el campo";
-export const INVALID_IBAN_MESSAGE = "El IBAN no es válido";
-export const INVALID_AMOUNT_MESSAGE = "El monto debe ser un número positivo";
-export const INVALID_DATE_MESSAGE = "La fecha debe ser posterior a la fecha actual";
-export const INVALID_EMAIL_MESSAGE = "El email no es válido";
 const buildValidationFailedResult = (errorMessage: string): FieldValidationResult => {
     return {
         succeeded: false,
@@ -83,4 +78,6 @@ export const validateEmailField = (value: string): FieldValidationResult => {
     }
     return buildValidationSucceededResult();
 }
+
+export { INVALID_AMOUNT_MESSAGE, INVALID_EMAIL_MESSAGE, REQUIRED_FIELD_MESSAGE }
 
