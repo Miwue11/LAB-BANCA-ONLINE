@@ -1,4 +1,4 @@
-import { TransferError } from "../transfer.vm";
+
 
 export const REQUIRED_FIELD_MESSAGE = "Debe informar el campo";
 export const INVALID_IBAN_MESSAGE = "El IBAN no es válido";
