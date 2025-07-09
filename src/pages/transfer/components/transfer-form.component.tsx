@@ -14,16 +14,25 @@ import classes from "./transfer-form.component.module.css";
 interface Props {
   accountList: AccountVm[];
   onTransfer: (transferInfo: TransferVm) => void;
+  defoultAccountId?: string;
 }
 
 export const TransferFormComponent: React.FC<Props> = (props) => {
-  const { accountList, onTransfer } = props;
+  const { accountList, onTransfer, defoultAccountId } = props;
   const [transfer, setTransfer] = React.useState<TransferVm>(
     createTransferVm()
   );
   const [errors, setErrors] = React.useState<TransferError>(
     createEmptyTransferError()
   );
+
+  React.useEffect(() => {
+    setTransfer({
+      ...transfer,
+      accountId: defoultAccountId ?? "",
+    });
+  }, []);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formValidationResult = validateForm(transfer);

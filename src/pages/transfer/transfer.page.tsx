@@ -8,9 +8,13 @@ import {
   mapAccountFromApiToVm,
   mapTransferFromVmToApi,
 } from "./transfer.mapper";
+import { useParams } from "react-router-dom";
 
 export const TransferPage: React.FC = () => {
   const [accountList, setAccountList] = React.useState<AccountVm[]>([]);
+
+  const { id } = useParams<{ id: string }>();
+
   React.useEffect(() => {
     getAccountList().then((accountListApi) => {
       const accountListVm = accountListApi.map(mapAccountFromApiToVm);
@@ -35,6 +39,7 @@ export const TransferPage: React.FC = () => {
         <TransferFormComponent
           accountList={accountList}
           onTransfer={handleTransfer}
+          defoultAccountId={id}
         />
       </div>
     </AppLayout>

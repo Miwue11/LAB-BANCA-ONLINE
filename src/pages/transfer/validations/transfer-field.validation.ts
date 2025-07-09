@@ -1,24 +1,13 @@
 import { isDateAfterToday, isEmailWellFormed, isPositiveNumber, isStringValueInFormed, isValidIban, isValueNotNullOrUndifined } from "@/common/validations"
-import { INVALID_AMOUNT_MESSAGE, INVALID_DATE_MESSAGE, INVALID_EMAIL_MESSAGE, INVALID_IBAN_MESSAGE, REQUIRED_FIELD_MESSAGE } from "./validations.const"
-import { FieldValidationResult } from "./validations.model"
+import { INVALID_AMOUNT_MESSAGE, INVALID_DATE_MESSAGE, INVALID_EMAIL_MESSAGE, INVALID_IBAN_MESSAGE } from "../../../common/validations/validations.const"
+import { FieldValidationResult } from "../../../common/validations/validations.model"
+import { buildRequiredFieldValidationFailedResponse, buildValidationFailedResult, buildValidationSucceededResult } from "../../../common/validations/plain.validation.helper";
 
-const buildValidationFailedResult = (errorMessage: string): FieldValidationResult => {
-    return {
-        succeeded: false,
-        errorMessage: errorMessage,
-    }
-}
-
-const buildValidationSucceededResult = (): FieldValidationResult => {
-    return {
-        succeeded: true,
-    }
-}
 
 
 export const validateIBANfield = (value: string): FieldValidationResult => {
     if (!isStringValueInFormed(value)) {
-        return buildValidationFailedResult(REQUIRED_FIELD_MESSAGE);
+        return buildRequiredFieldValidationFailedResponse();
     }
     if (!isValidIban(value)) {
         return buildValidationFailedResult(INVALID_IBAN_MESSAGE);
@@ -30,14 +19,14 @@ export const validateIBANfield = (value: string): FieldValidationResult => {
 
 export const validateAccountIdField = (value: string): FieldValidationResult => {
     if (!isStringValueInFormed(value)) {
-        return buildValidationFailedResult(REQUIRED_FIELD_MESSAGE);
+        return buildRequiredFieldValidationFailedResponse();
     }
     return buildValidationSucceededResult();
 }
 
 export const validasteNameField = (value: string): FieldValidationResult => {
     if (!isStringValueInFormed(value)) {
-        return buildValidationFailedResult(REQUIRED_FIELD_MESSAGE);
+        return buildRequiredFieldValidationFailedResponse();
     }
     return buildValidationSucceededResult();
 }
@@ -50,7 +39,7 @@ export const validateAmountField = (value: number): FieldValidationResult => {
 }
 export const validateConceptField = (value: string): FieldValidationResult => {
     if (!isStringValueInFormed(value)) {
-        return buildValidationFailedResult(REQUIRED_FIELD_MESSAGE);
+        return buildRequiredFieldValidationFailedResponse();
     }
     return buildValidationSucceededResult();
 }
@@ -79,5 +68,4 @@ export const validateEmailField = (value: string): FieldValidationResult => {
     return buildValidationSucceededResult();
 }
 
-export { INVALID_AMOUNT_MESSAGE, INVALID_EMAIL_MESSAGE, REQUIRED_FIELD_MESSAGE }
 
