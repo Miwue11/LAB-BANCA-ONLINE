@@ -1,15 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { saveAccount } from "../api/account.api";
 import classes from "./create-account.form.module.css";
 import { AccountError } from "../create-account.vm";
-
-interface Props {
-  onAccountCreated?: (account: { type: string; name: string }) => void;
-  defaultType?: string;
-  defaultName?: string;
-}
+import {
+  isStringValueInFormed,
+  isValueNotNullOrUndifined,
+} from "@/common/validations";
+import { appRoutes } from "@/core/router/routes";
 
 export const CreateAccountFormComponent: React.FC = () => {
+  const navigate = useNavigate();
+
   const [account, setAccount] = React.useState({
     type: "",
     name: "",
@@ -26,32 +28,46 @@ export const CreateAccountFormComponent: React.FC = () => {
     });
   }, []);
   const validateForm = () => {
-    let errors: AccountError = {
+    const newErrors: AccountError = {
       type: "",
       name: "",
     };
-
-    if (!account.type) {
-      errors.type = "El tipo de cuenta es requerido";
+    if (
+      !isValueNotNullOrUndifined(account.type) ||
+      account.type.trim() === ""
+    ) {
+      newErrors.type = "Debe seleccionar un tipo de cuenta";
     }
-
-    if (!account.name) {
-      errors.name = "El alias es requerido";
-    } else if (account.name.length < 3) {
-      errors.name = "El alias debe tener al menos 3 caracteres";
+    if (!isStringValueInFormed(account.name)) {
+      newErrors.name = "El alias es obligatorio";
     }
-
-    setErrors(errors);
-    return Object.values(errors).every((error) => error === "");
+    setErrors(newErrors);
+    return Object.values(newErrors).every((error) => !error);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     console.log("Cuenta creada:", account);
     saveAccount(account)
       .then((result) => {
         if (result) {
           alert("Cuenta creada exitosamente");
+
+          setAccount({
+            type: "",
+            name: "",
+          });
+          setErrors({
+            type: "",
+            name: "",
+          });
+
+          navigate(appRoutes.accountList);
         } else {
           alert("Error al crear la cuenta");
         }
@@ -63,10 +79,18 @@ export const CreateAccountFormComponent: React.FC = () => {
   };
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setAccount({
       ...account,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    if (errors[name as keyof AccountError]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
   };
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -75,6 +99,13 @@ export const CreateAccountFormComponent: React.FC = () => {
       ...account,
       [name]: value,
     });
+
+    if (errors[name as keyof AccountError]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
   };
   return (
     <form onSubmit={handleSubmit} className={classes.formContainer}>
@@ -85,12 +116,19 @@ export const CreateAccountFormComponent: React.FC = () => {
             name="type"
             value={account.type}
             onChange={handleSelectChange}
+            className={errors.type ? classes.inputError : ""}
+            required
           >
-            <option value="">Seleccione un tipo de cuenta</option>
+            <option value="" disabled>
+              Seleccione un tipo de cuenta
+            </option>
             <option value="Ahorros">Ahorros</option>
             <option value="Corriente">Corriente</option>
             <option value="Inversiones">Inversiones</option>
           </select>
+          {errors.type && (
+            <span className={classes.errorMessage}>{errors.type}</span>
+          )}
         </div>
         <div className={classes.formGroup2}>
           <label className={classes.formLabel}>Alias:</label>
@@ -99,7 +137,11 @@ export const CreateAccountFormComponent: React.FC = () => {
             name="name"
             value={account.name}
             onChange={handleFieldChange}
+            className={errors.name ? classes.inputError : ""}
           />
+          {errors.name && (
+            <span className={classes.errorMessage}>{errors.name}</span>
+          )}
         </div>
       </div>
       <button className={classes.button} type="submit">

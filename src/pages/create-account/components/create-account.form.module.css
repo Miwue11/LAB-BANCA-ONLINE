@@ -35,6 +35,24 @@
   margin-top: 10px;
 }
 
+.errorMessage {
+  color: var(--error_color);
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.inputError {
+  border: 1px solid var(--error_color);
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+}
+
+.inputError:focus {
+  outline: none;
+  border-color: var(--error_color);
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.3);
+}
+
 @media (max-width: 600px) {
   .div-container {
     padding: 20px;

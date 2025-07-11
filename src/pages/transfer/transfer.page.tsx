@@ -39,7 +39,7 @@ export const TransferPage: React.FC = () => {
         <TransferFormComponent
           accountList={accountList}
           onTransfer={handleTransfer}
-          defoultAccountId={id}
+          defaultAccountId={id}
         />
       </div>
     </AppLayout>

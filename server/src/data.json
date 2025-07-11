@@ -23,6 +23,14 @@
       "name": "Ahorro",
       "balance": 8500,
       "lastTransaction": "2019-11-15T08:29:04"
+    },
+    {
+      "iban": "AD26 5511 1961 444L 7671 956M",
+      "name": "compra-venta Pokémon",
+      "type": "Inversiones",
+      "balance": 0,
+      "lastTransaction": "2025-07-11T08:27:00.769Z",
+      "id": "JW4LHdr"
     }
   ],
   "movements": [
